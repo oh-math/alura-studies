@@ -1,13 +1,14 @@
 import React from "react";
-import Button from '../button'
+import Button from '../Button'
+import style from './Form.module.scss'
 
 // classes é uma maneira não mais tão usual de criar componentes e considerada Deprecated
 
 class Form extends React.Component {
   render() {
     return (
-      <form>
-        <div>
+      <form className={style.novaTarefa}>
+        <div className={style.inputContainer}>
           <label htmlFor="tarefa">Adicione um novo estudo</label>
           <input
             type="text"
@@ -17,7 +18,7 @@ class Form extends React.Component {
             required
           />
         </div>
-        <div>
+        <div className={style.inputContainer}>
           <label htmlFor="tempo"></label>
           <input
             type="time"
@@ -29,7 +30,9 @@ class Form extends React.Component {
             required
           />
         </div>
-        <Button />
+        <Button>
+          Adicionar
+        </Button>
       </form>
     );
   }
