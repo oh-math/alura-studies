@@ -1,10 +1,15 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import style from "./Button.module.scss";
-
-type Props = {
+interface IButtonProps {
   children?: React.ReactNode;
-};
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
+  onClick?: () => void;
+}
 
-export default function Button({children}: Props) {
-  return <button className={style.botao}>{children}</button>;
+export default function Button({ children, type, onClick }: IButtonProps) {
+  return (
+    <button onClick={onClick} className={style.botao} type={type}>
+      {children}
+    </button>
+  );
 }

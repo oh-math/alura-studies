@@ -1,23 +1,21 @@
-import style from './List.module.scss'
-import Item from './item';
+import { ITasks } from "../../types/tasks";
+import style from "./List.module.scss";
+import Item from "./item";
 
-function List() {
-  const tarefas = [
-    {
-      tarefa: "JavaScript",
-      tempo: "02:00:00",
-    },
-    {
-      tarefa: "Node",
-      tempo: "01:00:00",
-    },
-  ];
+interface ListProps {
+  tarefas: ITasks[];
+  selecionaTarefa: (tarefa: ITasks) => void;
+}
+
+function List({ tarefas, selecionaTarefa }: ListProps) {
+  // função useState desestruturada pegando o estado a função para mudar o msm
+
   return (
     <aside className={style.listaTarefas}>
       <h2>Estudos do dia</h2>
       <ul>
-        {tarefas.map((item, index) => (
-         <Item item={item} key={index}/>
+        {tarefas.map((item) => (
+          <Item selecionaTarefa={selecionaTarefa} key={item.id} {...item} />
         ))}
       </ul>
     </aside>
